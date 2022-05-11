@@ -13,6 +13,8 @@ Summary:        Collection of utils for Bevy Engine
 License:        MIT or ASL 2.0
 URL:            https://crates.io/crates/bevy_macro_utils
 Source:         %{crates_source}
+Source1: https://github.com/bevyengine/bevy/raw/v0.7.0/docs/LICENSE-APACHE
+Source2: https://github.com/bevyengine/bevy/raw/v0.7.0/docs/LICENSE-MIT
 
 ExclusiveArch:  %{rust_arches}
 
@@ -47,10 +49,13 @@ use the "default" feature of the "%{crate}" crate.
 
 %files       -n %{name}+default-devel
 %ghost %{crate_instdir}/Cargo.toml
+%license %{crate_instdir}/LICENSE-APACHE
+%license %{crate_instdir}/LICENSE-MIT
 
 %prep
 %autosetup -n %{crate}-%{version_no_tilde} -p1
 %cargo_prep
+cp %{SOURCE1} %{SOURCE2} .
 
 %generate_buildrequires
 %cargo_generate_buildrequires
