@@ -35,8 +35,9 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-# FIXME: no license files detected
 %{crate_instdir}/
+%license %{crate_instdir}/LICENSE-APACHE
+%license %{crate_instdir}/LICENSE-MIT
 
 %package     -n %{name}+default-devel
 Summary:        %{summary}
@@ -49,8 +50,6 @@ use the "default" feature of the "%{crate}" crate.
 
 %files       -n %{name}+default-devel
 %ghost %{crate_instdir}/Cargo.toml
-%license %{crate_instdir}/LICENSE-APACHE
-%license %{crate_instdir}/LICENSE-MIT
 
 %prep
 %autosetup -n %{crate}-%{version_no_tilde} -p1
